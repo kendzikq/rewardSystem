@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: reward-system
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/reward
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    generate-ddl: false
+  flyway:
+    fail-on-missing-locations: true

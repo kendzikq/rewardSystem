@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.rewardsystem.domain.entity.RewardCalculationTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2023-06-07T20:20:42" hostname="WA-21-0192" time="0.044">
+  <properties/>
+  <testcase name="testCalculatePoints()" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.004"/>
+  <testcase name="testCalculatePointsWithEmptyPurchases()" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.0"/>
+  <testcase name="[1] purchaseAmount=30, pointsResult=0" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.008"/>
+  <testcase name="[2] purchaseAmount=50, pointsResult=0" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.001"/>
+  <testcase name="[3] purchaseAmount=51, pointsResult=1" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.001"/>
+  <testcase name="[4] purchaseAmount=49, pointsResult=0" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.001"/>
+  <testcase name="[5] purchaseAmount=100, pointsResult=50" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.001"/>
+  <testcase name="[6] purchaseAmount=101, pointsResult=52" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.001"/>
+  <testcase name="[7] purchaseAmount=99, pointsResult=49" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.001"/>
+  <testcase name="[8] purchaseAmount=120, pointsResult=90" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.001"/>
+  <testcase name="testCalculatePointsWithZeroAmountPurchases()" classname="com.example.rewardsystem.domain.entity.RewardCalculationTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
