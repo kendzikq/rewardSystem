@@ -12,7 +12,6 @@ public class RewordResponse {
     private Map<String, Long> pointsPerMonth;
     private Long totalPoints;
 
-
     public RewordResponse(Map<String, Long> pointsPerMonth) {
         this.pointsPerMonth = pointsPerMonth;
     }

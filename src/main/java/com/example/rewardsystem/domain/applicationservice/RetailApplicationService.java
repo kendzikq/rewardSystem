@@ -23,8 +23,8 @@ public class RetailApplicationService {
 
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("MMMM-yyyy");
 
-    private PurchaseJpaRepository purchaseJpaRepository;
-    private RetailMapper mapper;
+    private final PurchaseJpaRepository purchaseJpaRepository;
+    private final RetailMapper mapper;
 
 
     public RewordResponse getRewardScore(
@@ -37,8 +37,13 @@ public class RetailApplicationService {
         };
     }
 
-    private Long getTotalRewardScore(Collection<PurchaseJpaEntity> purchases) {
-        return null;
+    private Long getTotalRewardScore(
+            List<PurchaseJpaEntity> jpaPurchases
+    ) {
+        var rewardCalculation = new RewardCalculation();
+        var purchases = mapper.map(jpaPurchases);
+        rewardCalculation.calculatePoints(purchases);
+        return rewardCalculation.returnPoints();
     }
 
     private Map<String, Long> getMonthlyRewardScore(
