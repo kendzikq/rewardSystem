@@ -2,11 +2,12 @@ package com.example.rewardsystem.web;
 
 
 import com.example.rewardsystem.domain.applicationservice.RetailApplicationService;
-import com.example.rewardsystem.web.dto.CreatePurchaseRequest;
+import com.example.rewardsystem.web.dto.CreatePurchaseResponse;
+import com.example.rewardsystem.web.dto.PurchaseRequest;
 import com.example.rewardsystem.web.dto.ResponseRewardMode;
 import com.example.rewardsystem.web.dto.RewordResponse;
-import com.example.rewardsystem.web.dto.UpdatePurchaseRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RequestMapping(value = "/retail")
 @RestController
 @RequiredArgsConstructor
@@ -24,27 +27,27 @@ public class RetailController {
     private final RetailApplicationService rewardApplicationService;
 
     @GetMapping("/reward/user/{userId}")
-    RewordResponse getReward(
+    ResponseEntity<RewordResponse> getReward(
             @PathVariable long userId,
-            @RequestParam(name = "mode") ResponseRewardMode responseRewardMode
+            @RequestParam(name = "mode") ResponseRewardMode mode
     ) {
-        return rewardApplicationService.getRewardScore(userId, responseRewardMode);
+        return rewardApplicationService.getRewardScore(userId, mode);
     }
 
     @PostMapping("/purchase/user/{userId}")
-    void createPurchase(
+    ResponseEntity<CreatePurchaseResponse> createPurchase(
             @PathVariable long userId,
-            @RequestBody CreatePurchaseRequest createPurchaseRequest
+            @RequestBody @Valid PurchaseRequest request
     ) {
-        rewardApplicationService.createPurchase(userId, createPurchaseRequest);
+        return rewardApplicationService.createPurchase(userId, request);
     }
 
     @PutMapping("/purchase/{purchaseId}")
-    void updatePurchase(
+    ResponseEntity<Void> updatePurchase(
             @PathVariable long purchaseId,
-            @RequestBody UpdatePurchaseRequest updatePurchaseRequest
+            @RequestBody @Valid PurchaseRequest request
     ) {
-        rewardApplicationService.updatePurchase(purchaseId, updatePurchaseRequest);
+        return rewardApplicationService.updatePurchase(purchaseId, request);
     }
 
 }

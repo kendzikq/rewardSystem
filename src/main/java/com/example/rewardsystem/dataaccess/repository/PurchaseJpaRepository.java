@@ -14,6 +14,7 @@ public interface PurchaseJpaRepository extends JpaRepository<PurchaseJpaEntity, 
     @Query("""
             SELECT entity FROM PurchaseJpaEntity entity
             WHERE entity.user.id = :userId
+            ORDER BY entity.date DESC
             """)
     List<PurchaseJpaEntity> findAllByUser(@Param("userId") Long userId);
 
