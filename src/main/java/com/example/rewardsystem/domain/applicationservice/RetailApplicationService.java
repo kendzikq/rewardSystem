@@ -32,9 +32,15 @@ public class RetailApplicationService {
     ) {
         var purchases = purchaseJpaRepository.findAllByUser(userId);
         return switch (responseRewardMode) {
-            case MONTHLY -> new RewordResponse(getMonthlyRewardScore(purchases));
             case TOTAL -> new RewordResponse(getTotalRewardScore(purchases));
+            case MONTHLY -> new RewordResponse(getMonthlyRewardScore(purchases));
         };
+    }
+
+    public void createPurchase(long userId, CreatePurchaseRequest createPurchaseRequest) {
+    }
+
+    public void updatePurchase(long purchaseId, UpdatePurchaseRequest updatePurchaseRequest) {
     }
 
     private Long getTotalRewardScore(
@@ -63,13 +69,5 @@ public class RetailApplicationService {
                         }
                 )
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
-
-    public void createPurchase(long userId, CreatePurchaseRequest createPurchaseRequest) {
-
-    }
-
-    public void updatePurchase(long purchaseId, UpdatePurchaseRequest updatePurchaseRequest) {
-
     }
 }

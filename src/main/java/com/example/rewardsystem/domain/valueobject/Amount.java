@@ -7,11 +7,6 @@ public class Amount extends SimpleValueObject<BigDecimal> implements Comparable<
 
     public static final Amount ZERO = new Amount(0);
 
-    private static BigDecimal setAmountScale(BigDecimal bigDecimal) {
-        return bigDecimal.setScale(2, RoundingMode.HALF_DOWN);
-    }
-
-
     public Amount(BigDecimal value) {
         super(setAmountScale(value));
     }
@@ -42,5 +37,16 @@ public class Amount extends SimpleValueObject<BigDecimal> implements Comparable<
             return min;
         }
         return this;
+    }
+
+    public Amount max(Amount max) {
+        if (this.compareTo(max) > 0) {
+            return max;
+        }
+        return this;
+    }
+
+    private static BigDecimal setAmountScale(BigDecimal bigDecimal) {
+        return bigDecimal.setScale(2, RoundingMode.HALF_DOWN);
     }
 }

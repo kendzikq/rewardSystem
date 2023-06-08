@@ -34,6 +34,6 @@ public class PurchaseJpaEntity {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "USER", nullable = false, referencedColumnName = "ID")
+    @JoinColumn(name = "USER_ID", nullable = false, referencedColumnName = "id")
     private UserJpaEntity user;
 }

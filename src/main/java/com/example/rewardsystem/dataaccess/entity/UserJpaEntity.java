@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "REWARD_USER")
 @Getter
 @Setter
 public class UserJpaEntity {

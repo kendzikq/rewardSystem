@@ -2,6 +2,8 @@ package com.example.rewardsystem.dataaccess.repository;
 
 import com.example.rewardsystem.dataaccess.entity.PurchaseJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,6 +11,10 @@ import java.util.List;
 @Repository
 public interface PurchaseJpaRepository extends JpaRepository<PurchaseJpaEntity, Long> {
 
-    List<PurchaseJpaEntity> findAllByUser(Long user);
+    @Query("""
+            SELECT entity FROM PurchaseJpaEntity entity
+            WHERE entity.user.id = :userId
+            """)
+    List<PurchaseJpaEntity> findAllByUser(@Param("userId") Long userId);
 
 }
