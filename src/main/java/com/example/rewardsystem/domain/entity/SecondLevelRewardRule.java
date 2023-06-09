@@ -12,6 +12,7 @@ class SecondLevelRewardRule extends RewardRule {
     long calculateReward(Purchase purchase) {
         var amount = purchase.getAmount();
         return amount
+                .resetDecimal()
                 .subtract(SECOND_LEVEL_AMOUNT_THRESHOLD)
                 .min(Amount.ZERO)
                 .multiply(SECOND_LEVEL_MULTIPLIER)

@@ -14,6 +14,7 @@ class FirstLevelRewardRule extends RewardRule {
     long calculateReward(Purchase purchase) {
         var amount = purchase.getAmount();
         return amount
+                .resetDecimal()
                 .max(FIRST_LEVEL_MAX_VALUE)
                 .subtract(FIRST_LEVEL_AMOUNT_THRESHOLD)
                 .min(Amount.ZERO)

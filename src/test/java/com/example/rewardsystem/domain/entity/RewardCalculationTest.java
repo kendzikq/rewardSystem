@@ -78,9 +78,13 @@ class RewardCalculationTest {
             "100, 50",
             "101, 52",
             "99, 49",
-            "120, 90"
+            "120, 90",
+            "50.01, 0",
+            "50.99, 0",
+            "100.01, 50",
+            "100.99, 50",
     })
-    void testCalculatePointsWithSinglePurchaseBelowThresholds(long purchaseAmount, long pointsResult) {
+    void testCalculatePointsWithSinglePurchaseBelowThresholds(double purchaseAmount, long pointsResult) {
 
         // given
         var rewardCalculation = new RewardCalculation();

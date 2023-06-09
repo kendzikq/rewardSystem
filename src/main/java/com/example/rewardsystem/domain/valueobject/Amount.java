@@ -46,6 +46,10 @@ public class Amount extends SimpleValueObject<BigDecimal> implements Comparable<
         return this;
     }
 
+    public Amount resetDecimal() {
+        return new Amount(this.getValue().setScale(0, RoundingMode.DOWN));
+    }
+
     private static BigDecimal setAmountScale(BigDecimal bigDecimal) {
         return bigDecimal.setScale(2, RoundingMode.HALF_DOWN);
     }
